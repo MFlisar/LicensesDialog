@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LicensesDialog</string>
+    
+    <string name="ld_licenses">Licenses</string>
+    <string name="ld_back">Back</string>
+    <string name="ld_loading">Loading...</string>
+
+</resources>
