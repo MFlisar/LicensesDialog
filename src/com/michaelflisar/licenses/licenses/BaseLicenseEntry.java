@@ -30,7 +30,7 @@ public abstract class BaseLicenseEntry implements Parcelable
         libraryAuthor = parcel.readString();
         libraryLink = parcel.readString();
         
-        license = parcel.readParcelable(getClass().getClassLoader());
+        license = parcel.readParcelable(null);
     }
     
     public BaseLicenseEntry(String libraryName, String libraryVersion, String libraryAuthor, String libraryLink, License license)

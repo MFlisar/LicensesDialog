@@ -7,14 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.michaelflisar.licenses.dialog.LicensesDialog;
 import com.michaelflisar.licenses.licenses.BaseLicenseEntry;
-import com.michaelflisar.licenses.licenses.GitLicenseEntry;
-import com.michaelflisar.licenses.licenses.License;
+import com.michaelflisar.licenses.licenses.Licenses;
 import com.michaelflisar.licensesdialogdemo.R;
+import com.michaelflisar.universalloader.ULActivity;
 
-public class MainActivity extends SherlockFragmentActivity implements OnClickListener
+public class MainActivity extends ULActivity implements OnClickListener
 {
     private List<BaseLicenseEntry> list = new ArrayList<BaseLicenseEntry>();
 
@@ -23,28 +22,24 @@ public class MainActivity extends SherlockFragmentActivity implements OnClickLis
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        list.add(Licenses.createGitLicense("Prototik/HoloEverywhere", "Custom", "LICENSE")); // not default LicenseFile name/path, default would be "LICENSE.txt"
+        list.add(Licenses.createGitLicense("jfeinstein10/SlidingMenu"));
+        list.add(Licenses.createGitLicense("bauerca/drag-sort-listview", Licenses.LICENSE_APACHE_V2)); // no license file in GIT Repo...
+        list.add(Licenses.createGitLicense("JakeWharton/Android-ViewPagerIndicator", Licenses.LICENSE_APACHE_V2)); // no license file in GIT Repo...
+        list.add(Licenses.createGitLicense("lorensiuswlt/NewQuickAction3D"));
+        list.add(Licenses.createGitLicense("JakeWharton/ActionBarSherlock"));
+        list.add(Licenses.createGitLicense("ManuelPeinado/MultiChoiceAdapter"));
 
-        // fremde Libraries
-        License customLicense = new License("Custom", ""); // only the name is used in GitLicenseEntries!!!
-        list.add(new GitLicenseEntry("Prototik/HoloEverywhere", customLicense).setManualLicensePath("LICENSE")); // not default LicenseFile nme/path, default would be "LICENSE.txt"
-        list.add(new GitLicenseEntry("jfeinstein10/SlidingMenu"));
-        list.add(new GitLicenseEntry("bauerca/drag-sort-listview").loadLicenseDirect()); // no license file in GIT Repo...
-        list.add(new GitLicenseEntry("JakeWharton/Android-ViewPagerIndicator").loadLicenseDirect()); // no license file in GIT Repo...
-        list.add(new GitLicenseEntry("lorensiuswlt/NewQuickAction3D"));
-        list.add(new GitLicenseEntry("JakeWharton/ActionBarSherlock"));
-        list.add(new GitLicenseEntry("ManuelPeinado/MultiChoiceAdapter"));
-
-        // eigene Libraries
-        list.add(new GitLicenseEntry("MichaelFlisar/MessageBar"));
-        list.add(new GitLicenseEntry("MichaelFlisar/Retainer"));
-        list.add(new GitLicenseEntry("MichaelFlisar/Debugger"));
-        list.add(new GitLicenseEntry("MichaelFlisar/LicensesDialog"));
+        list.add(Licenses.createGitLicense("MichaelFlisar/MessageBar"));
+        list.add(Licenses.createGitLicense("MichaelFlisar/UniversalLoader"));
+        list.add(Licenses.createGitLicense("MichaelFlisar/LicensesDialog"));
     }
 
     @Override
     public void onClick(View v)
     {
-        LicensesDialog dialog = new LicensesDialog(this, list);
+        LicensesDialog dialog = new LicensesDialog(list);
         dialog.show(getSupportFragmentManager(), this.getClass().getName());
     }
 }
