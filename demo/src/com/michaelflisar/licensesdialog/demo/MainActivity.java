@@ -12,6 +12,8 @@ import com.michaelflisar.licenses.licenses.BaseLicenseEntry;
 import com.michaelflisar.licenses.licenses.Licenses;
 import com.michaelflisar.licensesdialogdemo.R;
 import com.michaelflisar.universalloader.ULActivity;
+import com.michaelflisar.universalloader.helper.ULDebugger;
+import com.michaelflisar.universalloader.helper.ULDebugger.DebugMode;
 
 public class MainActivity extends ULActivity implements OnClickListener
 {
@@ -20,6 +22,7 @@ public class MainActivity extends ULActivity implements OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        ULDebugger.setDebugger(true, DebugMode.DETAILED);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         

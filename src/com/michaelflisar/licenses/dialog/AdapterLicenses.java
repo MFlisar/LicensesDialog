@@ -36,6 +36,11 @@ public class AdapterLicenses extends BaseExpandableListAdapter
     {
         return mLicenses.get(groupPosition);
     }
+    
+    public void setChild(int groupPosition, BaseLicenseEntry entry)
+    {
+        mLicenses.set(groupPosition, entry);
+    }
 
     @Override
     public long getChildId(int groupPosition, int childPosition)
