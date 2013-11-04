@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -21,6 +20,7 @@ import com.michaelflisar.universalloader.data.fragments.ULFragmentLoaderData.ULL
 import com.michaelflisar.universalloader.data.fragments.ULFragmentLoaders;
 import com.michaelflisar.universalloader.data.main.ULFragmentKey;
 import com.michaelflisar.universalloader.data.main.ULKey;
+import com.michaelflisar.universalloader.data.main.ULResult;
 import com.michaelflisar.universalloader.fragments.ULDialogFragment;
 
 public class LicensesDialog extends ULDialogFragment implements OnClickListener
@@ -96,12 +96,12 @@ public class LicensesDialog extends ULDialogFragment implements OnClickListener
     }
 
     @Override
-    public void onDataReceived(ULKey key, Object data)
+    public void onDataReceived(ULKey key, ULResult result)
     {
         if (mAdapter != null)
         {
             int pos = Integer.parseInt(key.toString().replace(mBaseKey.toString() + "|", ""));
-            mAdapter.setChild(pos, (BaseLicenseEntry) data);
+            mAdapter.setChild(pos, (BaseLicenseEntry) result.get());
             mAdapter.notifyDataSetChanged();
         }
     }
