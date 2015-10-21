@@ -1,3 +1,5 @@
+DEPRECATED - Project no longer maintained
+
 LicensesDialog
 ==============
 
